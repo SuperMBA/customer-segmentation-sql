@@ -1,47 +1,75 @@
-# 📊 Customer Behavior Analysis with SQL
+# 🧠 Customer Segmentation with SQL
 
-## 📌 Overview
-This project analyzes customer behavior using a PostgreSQL database. It identifies the most active customers based on the number of transactions and visualizes the results.
+## 📌 Описание проекта
 
----
+Этот проект — пример аналитики поведения клиентов с использованием SQL-запросов в PostgreSQL. Анализ проводится по двум таблицам: `customers` и `transactions`. Для работы использовалась среда DBeaver, скриншоты запросов и результатов включены.
 
-## 🗃️ Data Structure
-
-Key tables used in the analysis:
-- `customers_2` — customer details
-- `transactions_2` — purchase history
-- `products` — product catalog
-
-_The data was provided in an educational environment (PostgreSQL, accessed via DBeaver). Due to confidentiality, the raw data is not published._
+Проект иллюстрирует базовые и продвинутые SQL-техники, включая оконные функции, агрегации и работу с датами.
 
 ---
 
-## 🛠 Tools Used
-- PostgreSQL  
-- SQL  
-- DBeaver  
-- matplotlib (for visualization)
----
+## 📂 Структура репозитория
 
-## 📂 SQL File
+customer-segmentation-sql/
+* ├── images/ # Скриншоты результатов SQL-запросов
+* ├── sql_queries/ # SQL-скрипты
+* └── README.md # Описание проекта
 
-📄 [Full SQL-файл with analytics](sql/full_case_study.sql)
 
 ---
 
-## 🧠 SQL Logic
+## 🧩 Используемые SQL-инструменты
 
-```sql
-SELECT
-    c.customer_id,
-    c.first_name || ' ' || c.last_name AS full_name,
-    COUNT(t.transaction_id) AS transaction_count
-FROM
-    customers_2 c
-JOIN
-    transactions_2 t ON c.customer_id = t.customer_id
-GROUP BY
-    c.customer_id, full_name
-ORDER BY
-    transaction_count DESC
-LIMIT 10;
+- `SELECT`, `JOIN`, `GROUP BY`, `ORDER BY`
+- Агрегации: `COUNT()`, `SUM()`, `MAX()`, `MIN()`
+- Оконные функции: `ROW_NUMBER() OVER (...)`
+- Работа с датами: `TO_CHAR`, `MAX(date) - MIN(date)`
+- Фильтрация: `WHERE`, `LIMIT`
+
+---
+
+## 🔍 Ключевые бизнес-вопросы
+
+1. 📊 **Сколько клиентов в каждой индустрии?**
+   - `job_industry_category`, `COUNT(customer_id)`
+
+2. 💰 **Какие индустрии приносят наибольший доход по месяцам?**
+   - Сумма транзакций по месяцам и индустриям
+
+3. 💻 **Что чаще покупают онлайн-клиенты из IT-сферы?**
+   - Бренды и количество покупок
+
+4. 🔎 **Кто потратил больше/меньше всех?**
+   - `SUM(list_price)` по клиентам, сортировка по убыванию/возрастанию
+
+5. 🧮 **Средние, минимальные, максимальные траты и количество транзакций на клиента**
+   - Использование `GROUP BY` и оконных функций
+
+6. 📅 **Какие клиенты делали первые покупки раньше всех?**
+   - `ROW_NUMBER()` по `transaction_date`
+
+7. ⏳ **У кого самые длинные интервалы между транзакциями?**
+   - `MAX(date) - MIN(date)` по `customer_id`
+
+---
+
+## 🖼️ Скриншоты результатов (из папки `images/`)
+
+- `01_customer_count_by_industry.png` — Кол-во клиентов по индустриям  
+- `02_monthly_transaction_sum_by_industry.png` — Сумма транзакций по месяцам  
+- `03_online_transactions_it_customers_by_brand.png` — Покупки IT-клиентов онлайн  
+- `04_total_min_max_transaction_per_customer.png` — Сумма, мин и макс транзакции  
+- `05_total_min_max_transaction_with_window_functions.png` — Те же данные через оконные функции  
+- `06_lowest_total_spender.png` — Клиент с минимальными тратами  
+- `07_highest_total_spender.png` — Клиент с максимальными тратами  
+- `08_first_transaction_per_customer.png` — Первые транзакции  
+- `09_customer_with_max_transaction_interval.png` — Самый большой перерыв между покупками  
+- `10_top10_customers_by_transaction_interval.png` — Топ-10 по перерыву между транзакциями
+
+---
+
+## 📚 Автор
+
+МАРГАРИТА Баландина
+
+
