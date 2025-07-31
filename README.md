@@ -21,6 +21,11 @@ _The data was provided in an educational environment (PostgreSQL, accessed via D
 - SQL  
 - DBeaver  
 - matplotlib (for visualization)
+---
+
+## 📂 SQL File
+
+📄 [Full SQL-файл with analytics](sql/full_case_study.sql)
 
 ---
 
