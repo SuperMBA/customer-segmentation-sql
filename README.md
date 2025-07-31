@@ -28,45 +28,23 @@ customer-segmentation-sql/
 
 ---
 
-## 🔍 Ключевые бизнес-вопросы
+## 🔎 Аналитические вопросы
 
-1. 📊 **Сколько клиентов в каждой индустрии?**
-   - `job_industry_category`, `COUNT(customer_id)`
-
-2. 💰 **Какие индустрии приносят наибольший доход по месяцам?**
-   - Сумма транзакций по месяцам и индустриям
-
-3. 💻 **Что чаще покупают онлайн-клиенты из IT-сферы?**
-   - Бренды и количество покупок
-
-4. 🔎 **Кто потратил больше/меньше всех?**
-   - `SUM(list_price)` по клиентам, сортировка по убыванию/возрастанию
-
-5. 🧮 **Средние, минимальные, максимальные траты и количество транзакций на клиента**
-   - Использование `GROUP BY` и оконных функций
-
-6. 📅 **Какие клиенты делали первые покупки раньше всех?**
-   - `ROW_NUMBER()` по `transaction_date`
-
-7. ⏳ **У кого самые длинные интервалы между транзакциями?**
-   - `MAX(date) - MIN(date)` по `customer_id`
+| №  | Описание запроса                                               | Скриншот результата                              | 
+|----|----------------------------------------------------------------|--------------------------------------------------|
+| 1  | Количество клиентов по индустриям                              | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/01_customer_count_by_industry.png) 
+| 2  | Сумма транзакций по месяцам и индустриям                       | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/02_monthly_transaction_sum_by_industry.png)
+| 3  | Онлайн-покупки IT-клиентов по брендам                          | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/03_online_transactions_it_customers_by_brand.png)
+| 4  | Сумма, минимум, максимум по клиенту                            | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/04_total_min_max_transaction_per_customer.png)
+| 5  | Те же метрики с оконными функциями                             | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/05_total_min_max_transaction_with_window_functions.png)
+| 6  | Клиент с наименьшими тратами                                   | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/06_lowest_total_spender.png)
+| 7  | Клиент с наибольшими тратами                                   | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/07_highest_total_spender.png)
+| 8  | Самая первая транзакция по каждому клиенту                     | ![img]([https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/09_customer_with_max_transaction_interval.png](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/08_first_transaction_per_customer.png))
+| 9  | Клиент с наибольшим интервалом между транзакциями              | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/09_customer_with_max_transaction_interval.png)
+| 10 | Топ-10 клиентов по интервалу между покупками                   | ![img](https://github.com/SuperMBA/customer-segmentation-sql/blob/main/images/10_top10_customers_by_transaction_interval.png)
 
 ---
 
-## 🖼️ Скриншоты результатов (из папки `images/`)
-
-- `01_customer_count_by_industry.png` — Кол-во клиентов по индустриям  
-- `02_monthly_transaction_sum_by_industry.png` — Сумма транзакций по месяцам  
-- `03_online_transactions_it_customers_by_brand.png` — Покупки IT-клиентов онлайн  
-- `04_total_min_max_transaction_per_customer.png` — Сумма, мин и макс транзакции  
-- `05_total_min_max_transaction_with_window_functions.png` — Те же данные через оконные функции  
-- `06_lowest_total_spender.png` — Клиент с минимальными тратами  
-- `07_highest_total_spender.png` — Клиент с максимальными тратами  
-- `08_first_transaction_per_customer.png` — Первые транзакции  
-- `09_customer_with_max_transaction_interval.png` — Самый большой перерыв между покупками  
-- `10_top10_customers_by_transaction_interval.png` — Топ-10 по перерыву между транзакциями
-
----
 
 ## 📚 Автор
 
